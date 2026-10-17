@@ -82,8 +82,8 @@ fieldset { border: 0; padding: 0; }
 /* ---------- hero: a car on the lift, full screen ---------- */
 .hero { position: relative; min-height: max(100svh, 680px); background: var(--navy); color: var(--white); display: grid; grid-template-rows: auto 1fr auto; overflow: clip; }
 .hero-bg { position: absolute; inset: 0; }
-.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
-.hero-bg::after { content: ""; position: absolute; inset: 0; background: rgba(9, 14, 28, 0.62); }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 65% 50%; }
+.hero-bg::after { content: ""; position: absolute; inset: 0; background: rgba(9, 14, 28, 0.5); }
 .top, .hero-main, .hero-foot { position: relative; z-index: 1; }
 .top { display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center; padding: 22px var(--m) 0; }
 .logo { display: block; width: 190px; }
@@ -271,7 +271,7 @@ fieldset { border: 0; padding: 0; }
 <body>
 
 <header class="hero" id="top">
-  <div class="hero-bg"><img src="img/hero-service.jpg" width="1600" height="1066" alt="Белый внедорожник на подъёмнике в автосервисе, рядом мастер в синем комбинезоне" fetchpriority="high"></div>
+  <div class="hero-bg"><img src="img/hero-blue.jpg" width="1799" height="874" alt="Серый седан с открытым капотом на подъёмнике с синими стойками в автосервисе" fetchpriority="high"></div>
   <div class="top">
     <a class="logo" href="#top"><img src="img/logo-white.png" width="371" height="116" alt="MS Performance"></a>
     <nav class="nav" aria-label="Разделы">
