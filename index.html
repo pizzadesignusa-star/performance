@@ -10,8 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
-/* One motif: the gabled roofline of the steel hangar on Гиляровского, 50а.
-   Hero = a row of hangar roofs ending in the real blue gate; photos, bullets and buttons carry the same gable. */
+/* MS Performance: blue, steel grey and white, taken from the hangar on Гиляровского, 50а. Service first, vibration stand as one advantage. */
 :root {
   --white: #ffffff;
   --ground: #eef0f3;      /* light steel, the page */
@@ -61,14 +60,11 @@ fieldset { border: 0; padding: 0; }
 .head { font-size: var(--step-head); font-weight: 700; letter-spacing: -0.02em; line-height: 1; text-wrap: balance; }
 
 /* the gable, at every scale */
-.gable { clip-path: polygon(0 var(--roof), var(--peak, 50%) 0, 100% var(--roof), 100% 100%, 0 100%); }
 .button {
-  --roof: 9px;
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  min-height: 54px; padding: 9px 26px 0;
+  min-height: 54px; padding: 0 26px;
   background: var(--blue); color: var(--on-blue); border: 0; cursor: pointer;
   font: 500 var(--step-body)/1 "Onest", sans-serif; text-decoration: none;
-  clip-path: polygon(0 var(--roof), 50% 0, 100% var(--roof), 100% 100%, 0 100%);
   transition: transform var(--t-press) var(--ease-out), background-color var(--t-hover) ease;
 }
 .button:active { transform: scale(0.97); }
@@ -81,66 +77,58 @@ fieldset { border: 0; padding: 0; }
   .button.dark:hover { background-color: #000; }
   .link:hover { text-decoration-color: currentColor; }
 }
-.bullet { --roof: 34%; flex: none; width: 0.9em; height: 0.8em; background: var(--blue); clip-path: polygon(0 var(--roof), 50% 0, 100% var(--roof), 100% 100%, 0 100%); }
+.bullet { flex: none; width: 0.5em; height: 0.5em; background: var(--blue); }
 
 /* ---------- hero: a car on the lift, full screen ---------- */
-.hero { position: relative; min-height: max(100svh, 720px); background: var(--navy); color: var(--white); display: grid; grid-template-rows: auto 1fr auto; overflow: clip; }
+.hero { position: relative; min-height: max(100svh, 680px); background: var(--navy); color: var(--white); display: grid; grid-template-rows: auto 1fr auto; overflow: clip; }
 .hero-bg { position: absolute; inset: 0; }
 .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
-.hero-bg::after { content: ""; position: absolute; inset: 0; background: rgba(9, 14, 28, 0.66); }
-.top, .hero-main, .hero-foot, .scope { position: relative; z-index: 1; }
-.top { display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center; padding: 20px var(--m) 0; }
-.plate { display: block; width: 168px; height: 64px; overflow: hidden; background: var(--blue); }
-.plate img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.75); }
+.hero-bg::after { content: ""; position: absolute; inset: 0; background: rgba(9, 14, 28, 0.62); }
+.top, .hero-main, .hero-foot { position: relative; z-index: 1; }
+.top { display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center; padding: 22px var(--m) 0; }
+.logo { display: block; width: 190px; }
+.logo img { width: 100%; height: auto; }
 .top .nav { display: flex; gap: 28px; justify-content: center; font-size: var(--step-body); }
 .top .nav a { text-decoration: none; }
 .top .right { display: flex; gap: 20px; align-items: center; }
 .top .phone { font-size: var(--step-body); font-weight: 500; text-decoration: none; white-space: nowrap; }
-.hero-main { align-self: center; padding: 6vh var(--m) 0; max-width: 980px; }
+.hero-main { align-self: center; padding: 6vh var(--m) 0; max-width: 1040px; }
 .hero h1 { font-size: clamp(3.5rem, 8.6vw, 8.75rem); }
-.hero-main p { margin-top: 28px; font-size: var(--step-lead); line-height: 1.3; color: #e3e8f0; max-width: 36ch; }
+.hero-main p { margin-top: 28px; font-size: var(--step-lead); line-height: 1.3; color: #e3e8f0; max-width: 38ch; }
 .hero-main .acts { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; margin-top: 36px; }
-.hero-main .acts .link { font-weight: 500; }
-.scope { height: clamp(90px, 14vh, 150px); margin-top: 4vh; }
-.scope canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.scope-read { position: absolute; left: var(--m); top: 0; font-size: var(--step-small); color: #c9d2e0; transition: opacity var(--t-ui) ease; }
-.scope-read.swap { opacity: 0; }
-.hero-foot { display: flex; gap: 12px 40px; flex-wrap: wrap; padding: 0 var(--m) 24px; font-size: var(--step-body); }
-.hero-foot span { display: inline-flex; gap: 10px; align-items: baseline; }
-.hero-foot .bullet { width: 14px; height: 12px; background: var(--white); }
+.hero-main .acts .link { font-weight: 500; font-size: var(--step-lead); text-decoration: none; }
+.hero-foot { display: flex; gap: 12px 40px; flex-wrap: wrap; padding: 6vh var(--m) 26px; font-size: var(--step-body); }
+.hero-foot span { display: inline-flex; gap: 12px; align-items: center; }
+.hero-foot .bullet { background: var(--white); }
 @media (max-width: 860px) {
   .top { grid-template-columns: auto 1fr; }
   .top .nav, .top .right .button { display: none; }
   .top .right { justify-self: end; }
-  .plate { width: 132px; height: 50px; }
+  .logo { width: 150px; }
   .hero-main { padding-top: 40px; }
-  .hero h1 { font-size: 15vw; }
-  .hero-foot { flex-direction: column; gap: 6px; }
+  .hero h1 { font-size: 14vw; }
+  .hero-foot { flex-direction: column; gap: 8px; }
 }
 
-/* ---------- vibration stand (the live thing) ---------- */
-.vibro { padding-top: var(--gap-section); display: grid; grid-template-columns: 5fr 7fr; gap: 48px var(--m); align-items: start; }
-.vibro-head p { margin-top: 24px; max-width: 34ch; }
-.price-tag { display: flex; align-items: baseline; gap: 14px; margin-top: 40px; }
-.price-tag b { font-size: var(--step-head); font-weight: 800; letter-spacing: -0.02em; color: var(--blue); }
-.stand { background: var(--blue); color: var(--on-blue); padding: clamp(28px, 3vw, 48px); --roof: 28px; clip-path: polygon(0 var(--roof), 50% 0, 100% var(--roof), 100% 100%, 0 100%); padding-top: calc(var(--roof) + clamp(24px, 3vw, 40px)); }
-.stand > p { font-size: var(--step-lead); line-height: 1.25; max-width: 30ch; }
-.symptoms { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
-.symptoms button {
-  font: 500 var(--step-body)/1.2 "Onest", sans-serif; color: var(--on-blue); background: var(--blue-strong);
-  border: 0; padding: 12px 16px; cursor: pointer; text-align: left;
-  transition: background-color var(--t-hover) ease, color var(--t-hover) ease, transform var(--t-press) var(--ease-out);
+/* ---------- vibration stand: one advantage, one block ---------- */
+.vibro { margin-top: var(--gap-section); background: var(--blue); color: var(--on-blue); padding-top: 88px; padding-bottom: 88px; display: grid; grid-template-columns: 6fr 6fr; gap: 32px var(--m); align-items: center; }
+.vibro .head { max-width: 14ch; }
+.vibro p { font-size: var(--step-lead); line-height: 1.35; max-width: 40ch; color: #e8edfa; }
+.vibro .button { margin-top: 28px; }
+@media (max-width: 860px) { .vibro { grid-template-columns: 1fr; padding-top: 64px; padding-bottom: 64px; } }
+
+/* ---------- cars in the bay ---------- */
+.cars { padding-top: var(--gap-section); }
+.cars .head { margin-bottom: 40px; }
+.car-grid { display: grid; grid-template-columns: 6fr 3fr 3fr; grid-template-rows: repeat(2, minmax(220px, 34vh)); gap: 10px; }
+.car-grid figure { overflow: hidden; background: var(--steel); }
+.car-grid figure:first-child { grid-row: 1 / 3; }
+.car-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease-soft); }
+@media (hover: hover) and (pointer: fine) { .car-grid figure:hover img { transform: scale(1.04); } }
+@media (max-width: 860px) {
+  .car-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 70vw repeat(2, 46vw); }
+  .car-grid figure:first-child { grid-column: 1 / 3; grid-row: auto; }
 }
-.symptoms button:active { transform: scale(0.97); }
-.symptoms button[aria-pressed="true"] { background: var(--white); color: var(--blue); }
-@media (hover: hover) and (pointer: fine) { .symptoms button:not([aria-pressed="true"]):hover { background: #102a6c; } }
-.verdict { margin-top: 28px; background: var(--white); color: var(--ink); padding: 24px; min-height: 248px; }
-.verdict h3 { font-size: var(--step-lead); font-weight: 700; line-height: 1.2; }
-.verdict ul { margin-top: 14px; display: grid; gap: 8px; }
-.verdict li { display: flex; gap: 12px; align-items: baseline; }
-.verdict .after { margin-top: 18px; color: var(--muted); }
-.verdict .button { margin-top: 22px; }
-@media (max-width: 900px) { .vibro { grid-template-columns: 1fr; } }
 
 /* ---------- services list ---------- */
 .services { padding-top: var(--gap-section); }
@@ -154,7 +142,7 @@ fieldset { border: 0; padding: 0; }
 .svc-line { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
 .svc b { font-weight: 700; font-size: var(--step-lead); line-height: 1.2; }
 .svc .price { white-space: nowrap; font-weight: 700; font-size: var(--step-lead); color: var(--blue); font-variant-numeric: tabular-nums; }
-.svc p { margin-top: 6px; color: var(--muted); max-width: 42ch; }
+.svc p { margin-top: 6px; color: var(--ink); max-width: 42ch; }
 @media (max-width: 760px) { .svc-items { grid-template-columns: 1fr; gap: 28px; } }
 
 /* ---------- three signs it is time to come in ---------- */
@@ -165,56 +153,39 @@ fieldset { border: 0; padding: 0; }
 .sign-list li { display: grid; grid-template-columns: 34px 1fr; gap: 18px; }
 .sign-list .bullet { width: 34px; height: 30px; margin-top: 0.2em; background: var(--blue); }
 .sign-list b { display: block; font-size: var(--step-lead); font-weight: 700; line-height: 1.2; }
-.sign-list p { margin-top: 6px; color: #c7cfdb; max-width: 48ch; }
+.sign-list p { margin-top: 6px; color: var(--white); max-width: 48ch; }
 .signs-close { margin-top: 48px; max-width: 44ch; font-size: var(--step-body); }
 .signs .button { margin-top: 24px; }
-.signs-photo { aspect-ratio: 4 / 5; overflow: hidden; --roof: 12%; clip-path: polygon(0 var(--roof), 50% 0, 100% var(--roof), 100% 100%, 0 100%); }
+.signs-photo { aspect-ratio: 4 / 5; overflow: hidden; --roof: 12%; }
 .signs-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
 @media (max-width: 900px) {
   .signs { grid-template-columns: 1fr; padding-top: 88px; padding-bottom: 88px; }
   .signs-photo { width: min(100%, 420px); }
 }
 
-/* ---------- how we work: tiles that grow ---------- */
+/* ---------- how we work ---------- */
 .steps { padding-top: var(--gap-section); }
-.steps-grid { display: grid; grid-template-columns: 3fr 4fr 5fr; gap: 10px; align-items: end; }
-.step-tile { position: relative; overflow: hidden; --roof: 9%; clip-path: polygon(0 var(--roof), 50% 0, 100% var(--roof), 100% 100%, 0 100%); }
-.step-tile img { width: 100%; height: 100%; object-fit: cover; }
-.s1 .step-tile { height: 34vh; } .s2 .step-tile { height: 48vh; } .s3 .step-tile { height: 64vh; }
-.s1 .step-tile { background: var(--steel); } .s2 .step-tile { background: var(--steel-2); } .s3 .step-tile { background: var(--blue); }
-.step h3 { margin-top: 18px; font-size: var(--step-lead); font-weight: 700; }
-.step p { margin-top: 6px; color: var(--muted); max-width: 36ch; }
-.steps-top { height: 0; position: relative; z-index: 1; }
-.steps-top .head { max-width: 58%; }
-@media (max-width: 900px) {
-  .steps-top { height: auto; margin-bottom: 32px; }
-  .steps-top .head { max-width: none; }
-  .steps-grid { grid-template-columns: 1fr; gap: 32px; }
-  .s1 .step-tile { height: 40vw; } .s2 .step-tile { height: 54vw; } .s3 .step-tile { height: 70vw; }
-}
+.steps .head { margin-bottom: 48px; }
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--m); }
+.step { background: var(--white); padding: 32px; }
+.step h3 { font-size: var(--step-head); font-weight: 800; letter-spacing: -0.02em; line-height: 1; color: var(--blue); }
+.step p { margin-top: 16px; color: var(--ink); max-width: 34ch; }
+@media (max-width: 860px) { .steps-grid { grid-template-columns: 1fr; gap: 10px; } .step h3 { font-size: var(--step-lead); } }
 
 /* ---------- reviews ---------- */
-.reviews { padding-top: var(--gap-section); display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--m); }
-.reviews .portrait { grid-column: 1 / 6; height: 72svh; min-height: 520px; overflow: hidden; --roof: 8%; clip-path: polygon(0 var(--roof), 50% 0, 100% var(--roof), 100% 100%, 0 100%); }
-.reviews .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
-.lead-quote { grid-column: 7 / 13; padding-top: 120px; }
-.lead-quote blockquote p { font-size: var(--step-lead); line-height: 1.3; max-width: 44ch; }
-.who { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; font-size: var(--step-body); }
-.who .date { color: var(--muted); }
+.reviews { padding-top: var(--gap-section); }
+.reviews .head { margin-bottom: 40px; }
+.review-list { display: grid; grid-template-columns: 1fr 1fr; gap: var(--m); align-items: start; }
+.rq { background: var(--white); padding: 28px; }
+.rq .who { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; }
+.rq .who b { font-weight: 700; font-size: var(--step-lead); }
+.rq .date { color: var(--muted); }
+.rq .who { margin-top: 18px; }
+.rq blockquote p { font-size: var(--step-body); }
 .ymaps { display: inline-flex; align-items: center; gap: 8px; font-size: var(--step-small); font-weight: 500; color: var(--ink); text-decoration: none; }
 .ymaps svg { width: 18px; height: 22px; flex: none; }
-.more-quotes { grid-column: 1 / 13; margin-top: 120px; display: grid; gap: 56px; }
-.rq { display: grid; grid-template-columns: 4fr 8fr; gap: 16px var(--m); align-items: baseline; }
-.rq .who { margin-top: 0; flex-direction: column; align-items: flex-start; gap: 6px; }
-.rq .who b { font-weight: 700; font-size: var(--step-lead); }
-.rq blockquote p { font-size: var(--step-body); max-width: 60ch; }
-.all-reviews { grid-column: 1 / 13; margin-top: 32px; }
-@media (max-width: 900px) {
-  .reviews .portrait { grid-column: 1 / 10; height: 64vw; min-height: 0; }
-  .lead-quote { grid-column: 1 / 13; padding-top: 32px; }
-  .more-quotes { margin-top: 64px; gap: 40px; }
-  .rq { grid-template-columns: 1fr; }
-}
+.all-reviews { margin-top: 28px; }
+@media (max-width: 860px) { .review-list { grid-template-columns: 1fr; gap: 10px; } .rq { padding: 22px; } }
 
 /* ---------- booking coupon ---------- */
 .booking { padding-top: var(--gap-section); }
@@ -249,9 +220,8 @@ fieldset { border: 0; padding: 0; }
 .form-error { color: #ffe1dc; font-size: var(--step-small); min-height: 1.2em; }
 @media (max-width: 900px) {
   .coupon { grid-template-columns: 1fr; }
-  .coupon::before { top: 220px; left: 0; margin-top: -14px; }
-  .coupon::after { top: 220px; bottom: auto; left: 100%; margin-top: -14px; }
-  .coupon-left { padding: 32px 24px; height: 220px; }
+  .coupon::before, .coupon::after { display: none; }
+  .coupon-left { padding: 32px 24px 8px; gap: 20px; }
   .coupon form { border-left: 0; border-top: 5px dotted var(--ground); padding: 28px 24px 32px; }
 }
 
@@ -262,29 +232,21 @@ fieldset { border: 0; padding: 0; }
 .contacts dd { font-size: var(--step-lead); line-height: 1.25; }
 .contacts dd a { text-decoration: none; }
 .c-actions { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 12px; }
-.map { position: relative; min-height: 520px; background: var(--steel); --roof: 7%; clip-path: polygon(0 var(--roof), 50% 0, 100% var(--roof), 100% 100%, 0 100%); }
+.map { position: relative; min-height: 520px; background: var(--steel); --roof: 7%; }
 .map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .map-fallback { position: absolute; inset: auto 0 0 0; padding: 16px; background: var(--white); font-size: var(--step-small); }
 @media (max-width: 900px) { .contacts { grid-template-columns: 1fr; } .map { min-height: 380px; } }
 
-/* ---------- footer: the name built from wall panels ---------- */
+/* ---------- footer ---------- */
 .foot { margin-top: var(--gap-section); background: var(--navy); color: var(--white); padding: 72px var(--m) 28px; }
-.blocks { display: flex; gap: 4px; align-items: flex-end; height: 34svh; min-height: 220px; }
-.blocks span {
-  flex: 1 1 0; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 0.08em;
-  font-weight: 800; font-size: clamp(1.75rem, 6.6vw, 7rem); line-height: 1; color: var(--navy);
-  background: var(--steel); --roof: 14px; clip-path: polygon(0 var(--roof), 50% 0, 100% var(--roof), 100% 100%, 0 100%);
-}
-.blocks span.b { background: var(--blue); color: var(--white); }
-.blocks span.g { flex: 0.35 1 0; background: transparent; }
+.foot-logo { display: block; width: min(520px, 80%); }
+.foot-logo img { width: 100%; height: auto; }
 .foot-row { margin-top: 56px; display: grid; grid-template-columns: repeat(4, 1fr) 2fr; gap: 24px; font-size: var(--step-small); }
 .foot-row ul { display: grid; gap: 8px; }
 .foot-row a { text-decoration: none; }
 .foot-contacts { font-size: var(--step-body); display: grid; gap: 6px; }
 .legal { margin-top: 56px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; font-size: var(--step-small); color: #b7c0cd; }
 @media (max-width: 900px) {
-  .blocks { height: 22svh; min-height: 140px; flex-wrap: nowrap; }
-  .blocks span { font-size: 6.4vw; --roof: 8px; }
   .foot-row { grid-template-columns: 1fr 1fr; }
   .foot-contacts { grid-column: 1 / -1; }
 }
@@ -313,12 +275,12 @@ fieldset { border: 0; padding: 0; }
 <body>
 
 <header class="hero" id="top">
-  <div class="hero-bg"><img src="img/hero-lift.jpg" width="1920" height="1280" alt="Серебристый седан на двухстоечном подъёмнике с синими стойками в автосервисе" fetchpriority="high"></div>
+  <div class="hero-bg"><img src="img/hero.jpg" width="1600" height="1066" alt="Серебристый седан на двухстоечном подъёмнике с синими стойками в автосервисе" fetchpriority="high"></div>
   <div class="top">
-    <a class="plate" href="#top" aria-label="MS Performance, наверх"><img src="img/logo.jpg" width="600" height="600" alt="Логотип MS Performance"></a>
+    <a class="logo" href="#top"><img src="img/logo-white.png" width="371" height="116" alt="MS Performance"></a>
     <nav class="nav" aria-label="Разделы">
-      <a class="link" href="#vibro">Вибростенд</a>
       <a class="link" href="#services">Услуги</a>
+      <a class="link" href="#cars">Наши машины</a>
       <a class="link" href="#reviews">Отзывы</a>
       <a class="link" href="#contacts">Контакты</a>
     </nav>
@@ -328,55 +290,21 @@ fieldset { border: 0; padding: 0; }
     </div>
   </div>
   <div class="hero-main">
-    <h1 class="display" data-rise>Найдём,<br>что стучит</h1>
-    <p data-rise style="--i:1">Автосервис MS Performance в Вологде. Честная диагностика без лишних добавок и вибростенд за&nbsp;1800&nbsp;₽.</p>
+    <h1 class="display" data-rise>Автосервис<br>в&nbsp;Вологде</h1>
+    <p data-rise style="--i:1">MS Performance: профессиональный ремонт и честная диагностика без лишних добавок.</p>
     <div class="acts" data-rise style="--i:2">
-      <a class="button light" href="#booking">Записаться на диагностику</a>
-      <a class="link" href="#vibro">Как работает вибростенд</a>
+      <a class="button light" href="#booking">Записаться на ремонт</a>
+      <a class="link" href="tel:+79535081313">+7 (953) 508-13-13</a>
     </div>
   </div>
-  <div>
-    <div class="scope" aria-hidden="true">
-      <div class="scope-read" id="scope-read"><span id="scope-what">Стенд слышит: стук на неровностях</span></div>
-      <canvas id="scope"></canvas>
-    </div>
-    <div class="hero-foot">
-      <span><i class="bullet" aria-hidden="true"></i>Вибростенд 1800&nbsp;₽</span>
-      <span><i class="bullet" aria-hidden="true"></i>Ежедневно с&nbsp;9:00 до&nbsp;19:00</span>
-      <span><i class="bullet" aria-hidden="true"></i>Вологда, ул. Гиляровского, 50а</span>
-    </div>
+  <div class="hero-foot">
+    <span><i class="bullet" aria-hidden="true"></i>Ежедневно с&nbsp;9:00 до&nbsp;19:00</span>
+    <span><i class="bullet" aria-hidden="true"></i>ул. Гиляровского, 50а</span>
+    <span><i class="bullet" aria-hidden="true"></i>Отвечаем за качество своей работы</span>
   </div>
-</header></header></header>
+</header>
 
 <main>
-
-<section class="vibro wrap" id="vibro" aria-labelledby="vibro-h">
-  <div class="vibro-head">
-    <h2 class="head" id="vibro-h" data-reveal>Вибростенд найдёт стук</h2>
-    <p data-reveal style="--i:1">Стенд по очереди раскачивает узлы подвески и рулевого, а мастер слушает и смотрит снизу, откуда идёт звук. Так находится то, что не видно при осмотре на подъёмнике.</p>
-    <div class="price-tag" data-reveal style="--i:2"><b>1800&nbsp;₽</b><span>за диагностику на вибростенде</span></div>
-  </div>
-  <div class="stand" data-reveal style="--i:1">
-    <p>Что вас беспокоит? Покажем, что проверим.</p>
-    <div class="symptoms" role="group" aria-label="Симптомы">
-      <button type="button" data-s="knock" aria-pressed="true">Стук на неровностях</button>
-      <button type="button" data-s="squeak" aria-pressed="false">Скрип на лежачих</button>
-      <button type="button" data-s="rattle" aria-pressed="false">Дребезг в салоне</button>
-      <button type="button" data-s="steer" aria-pressed="false">Стук в руле</button>
-      <button type="button" data-s="buy" aria-pressed="false">Покупаю машину с пробегом</button>
-    </div>
-    <div class="verdict" aria-live="polite">
-      <h3 id="v-title">Стук на неровностях</h3>
-      <ul id="v-list">
-        <li><span class="bullet" aria-hidden="true"></span>Шаровые опоры и сайлентблоки рычагов</li>
-        <li><span class="bullet" aria-hidden="true"></span>Стойки и втулки стабилизатора</li>
-        <li><span class="bullet" aria-hidden="true"></span>Опоры амортизаторов и сами амортизаторы</li>
-      </ul>
-      <p class="after" id="v-after">После стенда говорим, что стучит, и называем цену ремонта. Решение за вами.</p>
-      <a class="button" href="#booking" id="v-book">Записаться на вибростенд</a>
-    </div>
-  </div>
-</section>
 
 <section class="services wrap" id="services" aria-labelledby="services-h">
   <h2 class="head" id="services-h" data-reveal>Чем занимаемся</h2>
@@ -403,6 +331,17 @@ fieldset { border: 0; padding: 0; }
   <p class="after-note" style="margin-top:48px;color:var(--muted);max-width:60ch" data-reveal>Стоимость ремонта называем после диагностики и до начала работ.</p>
 </section>
 
+<section class="cars wrap" id="cars" aria-labelledby="cars-h">
+  <h2 class="head" id="cars-h" data-reveal>Машины в нашем боксе</h2>
+  <div class="car-grid">
+    <figure data-reveal><img src="img/car-2.webp" width="953" height="1280" alt="Ford F-150 Raptor в боксе MS Performance" loading="lazy"></figure>
+    <figure data-reveal style="--i:1"><img src="img/car-3.webp" width="909" height="1280" alt="Audi A6 на подъёмнике" loading="lazy"></figure>
+    <figure data-reveal style="--i:2"><img src="img/car-0.webp" width="960" height="1280" alt="Mercedes-Benz E в боксе" loading="lazy"></figure>
+    <figure data-reveal style="--i:3"><img src="img/car-4.webp" width="720" height="1280" alt="BMW 3 серии между стойками подъёмника" loading="lazy" style="object-position:50% 60%"></figure>
+    <figure data-reveal style="--i:4"><img src="img/car-1.webp" width="960" height="1280" alt="Фасад автосервиса MS Performance с синими воротами" loading="lazy"></figure>
+  </div>
+</section>
+
 <section class="signs wrap" id="signs" aria-labelledby="signs-h">
   <div>
     <h2 class="head" id="signs-h" data-reveal>3 признака, что пора в автосервис</h2>
@@ -418,48 +357,43 @@ fieldset { border: 0; padding: 0; }
   <figure class="signs-photo" data-reveal style="--i:1"><img src="img/car-5.webp" width="960" height="1280" alt="Белый Mercedes-AMG CLA на подъёмнике со снятыми колёсами" loading="lazy"></figure>
 </section>
 
+<section class="vibro wrap" id="vibro" aria-labelledby="vibro-h">
+  <h2 class="head" id="vibro-h" data-reveal>Вибростенд за&nbsp;1800&nbsp;₽</h2>
+  <div data-reveal style="--i:1">
+    <p>Стенд раскачивает подвеску, а мастер находит стуки и скрипы, которые не видно при обычном осмотре.</p>
+    <a class="button light" href="#booking" id="v-book">Записаться на вибростенд</a>
+  </div>
+</section>
+
 <section class="steps wrap" id="how" aria-labelledby="how-h">
-  <div class="steps-top"><h2 class="head" id="how-h" data-reveal>Сначала диагностика</h2></div>
+  <h2 class="head" id="how-h" data-reveal>Как мы работаем</h2>
   <div class="steps-grid">
-    <div class="step s1" data-reveal>
-      <div class="step-tile"><img src="img/car-3.webp" width="909" height="1280" alt="Audi A6 на подъёмнике во время диагностики" loading="lazy" style="object-position:50% 40%"></div>
-      <h3>Диагностика</h3>
-      <p>Находим причину и показываем её вам. Без лишних добавок.</p>
-    </div>
-    <div class="step s2" data-reveal style="--i:1">
-      <div class="step-tile"><img src="img/car-4.webp" width="720" height="1280" alt="BMW в боксе перед ремонтом" loading="lazy" style="object-position:50% 55%"></div>
-      <h3>Согласование</h3>
-      <p>Называем работы и цену. Без вашего согласия не начинаем.</p>
-    </div>
-    <div class="step s3" data-reveal style="--i:2">
-      <div class="step-tile"><img src="img/car-0.webp" width="960" height="1280" alt="Готовый Mercedes-Benz E в боксе" loading="lazy" style="object-position:50% 60%"></div>
-      <h3>Ремонт и выдача</h3>
-      <p>Держим вас в курсе на каждом этапе и отдаём машину, за которую отвечаем.</p>
-    </div>
+    <div class="step" data-reveal><h3>Диагностика</h3><p>Находим причину и показываем её вам. Без лишних добавок.</p></div>
+    <div class="step" data-reveal style="--i:1"><h3>Согласование</h3><p>Называем работы и цену. Без вашего согласия не начинаем.</p></div>
+    <div class="step" data-reveal style="--i:2"><h3>Ремонт</h3><p>Держим вас в курсе на каждом этапе и отдаём машину, за которую отвечаем.</p></div>
   </div>
 </section>
 
 <section class="reviews wrap" id="reviews" aria-labelledby="reviews-h">
-  <h2 class="vh" id="reviews-h">Отзывы клиентов с Яндекс Карт</h2>
-  <figure class="portrait" data-reveal><img src="img/car-2.webp" width="953" height="1280" alt="Ford F-150 Raptor в боксе MS Performance" loading="lazy"></figure>
-  <figure class="lead-quote" data-reveal style="--i:1">
-    <blockquote><p>Прекрасный сервис, стучал звук не понятный который не могли устранить в 3 сервисах, приехал к ребятам устранили, быстро, качественно. Благодарен. Спасибо за обслуживание</p></blockquote>
-    <figcaption class="who"><span>Магеррам Н.</span><span class="date">5 мая</span><span class="ymaps"><svg viewBox="0 0 18 22" aria-hidden="true"><path d="M9 0a9 9 0 0 0-9 9c0 6.2 7.6 12.3 8.3 12.8a1.1 1.1 0 0 0 1.4 0C10.4 21.3 18 15.2 18 9a9 9 0 0 0-9-9z" fill="#fc3f1d"/><circle cx="9" cy="9" r="3.4" fill="#fff"/></svg>Яндекс Карты</span></figcaption>
-  </figure>
-  <ul class="more-quotes">
-    <li class="rq" data-reveal>
-      <div class="who"><b>Максим Тихоновский</b><span class="date">11 июля</span><span class="ymaps"><svg viewBox="0 0 18 22" aria-hidden="true"><path d="M9 0a9 9 0 0 0-9 9c0 6.2 7.6 12.3 8.3 12.8a1.1 1.1 0 0 0 1.4 0C10.4 21.3 18 15.2 18 9a9 9 0 0 0-9-9z" fill="#fc3f1d"/><circle cx="9" cy="9" r="3.4" fill="#fff"/></svg>Яндекс Карты</span></div>
+  <h2 class="head" id="reviews-h" data-reveal>Отзывы клиентов</h2>
+  <div class="review-list">
+    <figure class="rq" data-reveal style="--i:0">
+      <blockquote><p>Прекрасный сервис, стучал звук не понятный который не могли устранить в 3 сервисах, приехал к ребятам устранили, быстро, качественно. Благодарен. Спасибо за обслуживание</p></blockquote>
+      <figcaption class="who"><b>Магеррам Н.</b><span class="date">5 мая</span><span class="ymaps"><svg viewBox="0 0 18 22" aria-hidden="true"><path d="M9 0a9 9 0 0 0-9 9c0 6.2 7.6 12.3 8.3 12.8a1.1 1.1 0 0 0 1.4 0C10.4 21.3 18 15.2 18 9a9 9 0 0 0-9-9z" fill="#fc3f1d"/><circle cx="9" cy="9" r="3.4" fill="#fff"/></svg>Яндекс Карты</span></figcaption>
+    </figure>
+    <figure class="rq" data-reveal style="--i:1">
       <blockquote><p>Отличный сервис, наверное один из лучших в Вологде!!! Парни делают четко, быстро, честно, что важно и без дополнительных доплат!!! Сначала диагностика, потом согласование и вуаля-машина в идеале!!! Спасибо огромное, за шикарное обслуживание!!! Так держать!!! Развития и расширения!!!</p></blockquote>
-    </li>
-    <li class="rq" data-reveal>
-      <div class="who"><b>Alena Petrova</b><span class="date">9 февраля</span><span class="ymaps"><svg viewBox="0 0 18 22" aria-hidden="true"><path d="M9 0a9 9 0 0 0-9 9c0 6.2 7.6 12.3 8.3 12.8a1.1 1.1 0 0 0 1.4 0C10.4 21.3 18 15.2 18 9a9 9 0 0 0-9-9z" fill="#fc3f1d"/><circle cx="9" cy="9" r="3.4" fill="#fff"/></svg>Яндекс Карты</span></div>
-      <blockquote><p>Обратилась в сервис MS Performance, и осталась в полном восторге! С первых минут меня порадовало отношение к клиентам: сотрудники вежливые и отзывчивые. Сервис чистый и просторный, что приятно удивило. А самое главное — они действительно устранили проблемы с машиной, с которыми другие сервисы не справились. Ребята были на связи на каждом этапе ремонта, так что я не переживала, что моя машина пропадет в бескрайних просторах гаража. Работы сделали супер быстро, и теперь я могу снова ездить без страха застрять на обочине. Рекомендую всем, кто хочет получить качественный сервис и хорошее настроение! Обязательно вернусь снова!</p></blockquote>
-    </li>
-    <li class="rq" data-reveal>
-      <div class="who"><b>Андрей Бутусов</b><span class="date">1 апреля</span><span class="ymaps"><svg viewBox="0 0 18 22" aria-hidden="true"><path d="M9 0a9 9 0 0 0-9 9c0 6.2 7.6 12.3 8.3 12.8a1.1 1.1 0 0 0 1.4 0C10.4 21.3 18 15.2 18 9a9 9 0 0 0-9-9z" fill="#fc3f1d"/><circle cx="9" cy="9" r="3.4" fill="#fff"/></svg>Яндекс Карты</span></div>
+      <figcaption class="who"><b>Максим Тихоновский</b><span class="date">11 июля</span><span class="ymaps"><svg viewBox="0 0 18 22" aria-hidden="true"><path d="M9 0a9 9 0 0 0-9 9c0 6.2 7.6 12.3 8.3 12.8a1.1 1.1 0 0 0 1.4 0C10.4 21.3 18 15.2 18 9a9 9 0 0 0-9-9z" fill="#fc3f1d"/><circle cx="9" cy="9" r="3.4" fill="#fff"/></svg>Яндекс Карты</span></figcaption>
+    </figure>
+    <figure class="rq" data-reveal style="--i:0">
       <blockquote><p>Приезжаю в этот автосервис по необходимости! Приветливый персонал! Хорошая обратная связь! Запчасти подберут, отличный компетентный сотрудник Александр! Приезжайте все отлично</p></blockquote>
-    </li>
-  </ul>
+      <figcaption class="who"><b>Андрей Бутусов</b><span class="date">1 апреля</span><span class="ymaps"><svg viewBox="0 0 18 22" aria-hidden="true"><path d="M9 0a9 9 0 0 0-9 9c0 6.2 7.6 12.3 8.3 12.8a1.1 1.1 0 0 0 1.4 0C10.4 21.3 18 15.2 18 9a9 9 0 0 0-9-9z" fill="#fc3f1d"/><circle cx="9" cy="9" r="3.4" fill="#fff"/></svg>Яндекс Карты</span></figcaption>
+    </figure>
+    <figure class="rq" data-reveal style="--i:1">
+      <blockquote><p>Обратилась в сервис MS Performance, и осталась в полном восторге! С первых минут меня порадовало отношение к клиентам: сотрудники вежливые и отзывчивые. Сервис чистый и просторный, что приятно удивило. А самое главное — они действительно устранили проблемы с машиной, с которыми другие сервисы не справились. Ребята были на связи на каждом этапе ремонта, так что я не переживала, что моя машина пропадет в бескрайних просторах гаража. Работы сделали супер быстро, и теперь я могу снова ездить без страха застрять на обочине. Рекомендую всем, кто хочет получить качественный сервис и хорошее настроение! Обязательно вернусь снова!</p></blockquote>
+      <figcaption class="who"><b>Alena Petrova</b><span class="date">9 февраля</span><span class="ymaps"><svg viewBox="0 0 18 22" aria-hidden="true"><path d="M9 0a9 9 0 0 0-9 9c0 6.2 7.6 12.3 8.3 12.8a1.1 1.1 0 0 0 1.4 0C10.4 21.3 18 15.2 18 9a9 9 0 0 0-9-9z" fill="#fc3f1d"/><circle cx="9" cy="9" r="3.4" fill="#fff"/></svg>Яндекс Карты</span></figcaption>
+    </figure>
+  </div>
   <p class="all-reviews" data-reveal><a class="link" href="https://yandex.ru/maps/21/vologda/?ll=39.930815%2C59.229061&amp;z=16" target="_blank" rel="noopener">Все отзывы о MS Performance на Яндекс Картах</a></p>
 </section>
 
@@ -475,12 +409,13 @@ fieldset { border: 0; padding: 0; }
       <label class="field"><span class="vh">Автомобиль</span><input id="f-car" name="car" placeholder="Марка, модель, год"></label>
       <label class="field"><span class="vh">Что нужно сделать</span>
         <select id="f-service" name="service">
-          <option>Диагностика на вибростенде, 1800 ₽</option>
+          <option>Диагностика</option>
           <option>Компьютерная диагностика</option>
           <option>Ремонт подвески и рулевого</option>
           <option>Тормозная система</option>
           <option>Двигатель</option>
           <option>ТО и подбор запчастей</option>
+          <option>Вибростенд, 1800 ₽</option>
           <option>Другое</option>
         </select>
       </label>
@@ -521,12 +456,9 @@ fieldset { border: 0; padding: 0; }
 </main>
 
 <footer class="foot">
-  <div class="blocks" aria-label="MS Performance" role="img">
-    <span class="b" style="height:100%">M</span><span class="b" style="height:88%">S</span><span class="g" aria-hidden="true"></span>
-    <span style="height:70%">P</span><span style="height:82%">E</span><span style="height:64%">R</span><span style="height:92%">F</span><span style="height:74%">O</span><span style="height:86%">R</span><span style="height:66%">M</span><span style="height:96%">A</span><span style="height:72%">N</span><span style="height:84%">C</span><span style="height:68%">E</span>
-  </div>
+  <a class="foot-logo" href="#top"><img src="img/logo-white.png" width="371" height="116" alt="MS Performance" loading="lazy"></a>
   <div class="foot-row">
-    <ul><li><a class="link" href="#vibro">Вибростенд</a></li><li><a class="link" href="#services">Услуги</a></li></ul>
+    <ul><li><a class="link" href="#services">Услуги</a></li><li><a class="link" href="#cars">Наши машины</a></li></ul>
     <ul><li><a class="link" href="#how">Как работаем</a></li><li><a class="link" href="#contacts">Контакты</a></li></ul>
     <ul><li><a class="link" href="#reviews">Отзывы</a></li><li><a class="link" href="#booking">Запись</a></li></ul>
     <ul><li><a class="link" href="privacy.html">Политика конфиденциальности</a></li><li><a class="link" href="terms.html">Пользовательское соглашение</a></li><li><a class="link" href="privacy.html#cookie">Использование cookie</a></li></ul>
@@ -548,92 +480,10 @@ fieldset { border: 0; padding: 0; }
 </div>
 
 <script>
-// hero: the vibration stand, drawn as a trace that scrolls and jumps where something knocks
+// the vibration stand button picks that option in the form
 (() => {
-  const cv = document.getElementById('scope');
-  if (!cv) return;
-  const ctx = cv.getContext('2d');
-  const what = document.getElementById('scope-what'), read = document.getElementById('scope-read');
-  const modes = [
-    { w: 'Стенд слышит: стук на неровностях', c: 'Проверяем шаровые, сайлентблоки, стабилизатор', every: 0.9, f: 9, amp: 1, decay: 7, pair: false, hiss: 0 },
-    { w: 'Стенд слышит: скрип на лежачих', c: 'Проверяем резиновые втулки и опорные подшипники', every: 1.4, f: 34, amp: 0.55, decay: 3, pair: false, hiss: 0 },
-    { w: 'Стенд слышит: дребезг в салоне', c: 'Проверяем крепления выхлопа, экраны, подрамник', every: 0.5, f: 18, amp: 0.35, decay: 9, pair: false, hiss: 0.18 },
-    { w: 'Стенд слышит: стук в руле', c: 'Проверяем рулевые тяги, наконечники, рейку', every: 1.2, f: 11, amp: 0.85, decay: 8, pair: true, hiss: 0 }
-  ];
-  let m = 0, W = 0, H = 0, dpr = 1, pts = [], t = 0, lastHit = -9, last = performance.now();
-  const step = 3;
-  const size = () => {
-    dpr = Math.min(2, devicePixelRatio || 1);
-    W = cv.clientWidth; H = cv.clientHeight;
-    cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    pts = new Array(Math.ceil(W / step) + 2).fill(null).map(() => ({ y: 0, hot: 0 }));
-  };
-  const sample = () => {
-    const md = modes[m];
-    const since = t - lastHit;
-    if (since > md.every * (0.75 + Math.random() * 0.5)) lastHit = t;
-    const s2 = t - lastHit;
-    let y = Math.sin(t * 2.1) * 0.03 + (Math.random() - 0.5) * 0.04 + (Math.random() - 0.5) * md.hiss;
-    let hot = 0;
-    const burst = (dt) => { if (dt >= 0 && dt < 0.5) { const e = Math.exp(-dt * md.decay); y += md.amp * e * Math.sin(dt * md.f * 6.283); hot = Math.max(hot, e); } };
-    burst(s2); if (md.pair) burst(s2 - 0.12);
-    return { y, hot };
-  };
-  const draw = () => {
-    ctx.clearRect(0, 0, W, H);
-    const mid = H * 0.6, A = H * 0.34;
-    ctx.lineJoin = 'round'; ctx.lineWidth = 2.5;
-    for (let i = 1; i < pts.length; i++) {
-      const a = pts[i - 1], b = pts[i];
-      ctx.strokeStyle = b.hot > 0.15 ? '#8fb0ff' : 'rgba(255,255,255,0.78)';
-      ctx.beginPath(); ctx.moveTo((i - 1) * step, mid - a.y * A); ctx.lineTo(i * step, mid - b.y * A); ctx.stroke();
-    }
-  };
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  size();
-  if (reduce) { for (let i = 0; i < pts.length; i++) { t += 0.012; pts[i] = sample(); } draw(); }
-  else {
-    const loop = (now) => {
-      const dt = Math.min(0.05, (now - last) / 1000); last = now;
-      const n = Math.max(1, Math.round(dt / 0.012));
-      for (let k = 0; k < n; k++) { t += 0.012; pts.shift(); pts.push(sample()); }
-      draw(); requestAnimationFrame(loop);
-    };
-    for (let i = 0; i < pts.length; i++) { t += 0.012; pts[i] = sample(); }
-    requestAnimationFrame(loop);
-    setInterval(() => {
-      read.classList.add('swap');
-      setTimeout(() => { m = (m + 1) % modes.length; what.textContent = modes[m].w; read.classList.remove('swap'); }, 260);
-    }, 5200);
-  }
-  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 120); });
-})();
-
-// vibration stand: what we check for each symptom
-(() => {
-  const data = {
-    knock:  { t: 'Стук на неровностях', l: ['Шаровые опоры и сайлентблоки рычагов', 'Стойки и втулки стабилизатора', 'Опоры амортизаторов и сами амортизаторы'], a: 'После стенда говорим, что стучит, и называем цену ремонта. Решение за вами.' },
-    squeak: { t: 'Скрип на лежачих', l: ['Сайлентблоки и резиновые втулки', 'Шаровые опоры без смазки', 'Опорные подшипники стоек'], a: 'Скрип часто идёт от резины, а не от металла. Покажем, какая деталь скрипит.' },
-    rattle: { t: 'Дребезг в салоне', l: ['Крепления выхлопной системы и экранов', 'Подрамник и его крепления', 'Пластик и защита, которые бьются о кузов'], a: 'Иногда это не подвеска. Стенд помогает отличить одно от другого.' },
-    steer:  { t: 'Стук в руле', l: ['Рулевые тяги и наконечники', 'Рулевая рейка и её крепления', 'Карданчик рулевого вала'], a: 'Стук в руле лучше не откладывать: скажем, насколько это срочно.' },
-    buy:    { t: 'Покупаю машину с пробегом', l: ['Вся подвеска и рулевое, узел за узлом', 'Следы ремонта и течи снизу', 'Что придётся менять в ближайшее время'], a: 'Приезжайте вместе с продавцом: после проверки вы будете знать, во что обойдётся машина.' }
-  };
-  const btns = document.querySelectorAll('.symptoms button');
-  const title = document.getElementById('v-title'), list = document.getElementById('v-list'), after = document.getElementById('v-after');
-  let current = 'knock';
-  const show = (k) => {
-    current = k;
-    btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.s === k)));
-    title.textContent = data[k].t;
-    list.innerHTML = data[k].l.map((x) => `<li><span class="bullet" aria-hidden="true"></span>${x}</li>`).join('');
-    after.textContent = data[k].a;
-  };
-  btns.forEach((b) => b.addEventListener('click', () => show(b.dataset.s)));
-  document.getElementById('v-book').addEventListener('click', () => {
-    document.getElementById('f-service').selectedIndex = 0;
-    const note = document.getElementById('f-note');
-    if (!note.value) note.value = 'Симптом: ' + data[current].t.toLowerCase();
-  });
+  const b = document.getElementById('v-book');
+  if (b) b.addEventListener('click', () => { const sel = document.getElementById('f-service'); [...sel.options].forEach((o, k) => { if (o.text.startsWith('Вибростенд')) sel.selectedIndex = k; }); });
 })();
 
 // booking form: no server yet, so the request is assembled and handed to VK or the phone
