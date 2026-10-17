@@ -120,15 +120,11 @@ fieldset { border: 0; padding: 0; }
 /* ---------- cars in the bay ---------- */
 .cars { padding-top: var(--gap-section); }
 .cars .head { margin-bottom: 40px; }
-.car-grid { display: grid; grid-template-columns: 6fr 3fr 3fr; grid-template-rows: repeat(2, minmax(220px, 34vh)); gap: 10px; }
-.car-grid figure { overflow: hidden; background: var(--steel); }
-.car-grid figure:first-child { grid-row: 1 / 3; }
+.car-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.car-grid figure { overflow: hidden; background: var(--steel); aspect-ratio: 4 / 5; }
 .car-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease-soft); }
 @media (hover: hover) and (pointer: fine) { .car-grid figure:hover img { transform: scale(1.04); } }
-@media (max-width: 860px) {
-  .car-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 70vw repeat(2, 46vw); }
-  .car-grid figure:first-child { grid-column: 1 / 3; grid-row: auto; }
-}
+@media (max-width: 860px) { .car-grid { grid-template-columns: 1fr 1fr; } }
 
 /* ---------- services list ---------- */
 .services { padding-top: var(--gap-section); }
@@ -275,7 +271,7 @@ fieldset { border: 0; padding: 0; }
 <body>
 
 <header class="hero" id="top">
-  <div class="hero-bg"><img src="img/hero.jpg" width="1600" height="1066" alt="Серебристый седан на двухстоечном подъёмнике с синими стойками в автосервисе" fetchpriority="high"></div>
+  <div class="hero-bg"><img src="img/hero-service.jpg" width="1600" height="1066" alt="Белый внедорожник на подъёмнике в автосервисе, рядом мастер в синем комбинезоне" fetchpriority="high"></div>
   <div class="top">
     <a class="logo" href="#top"><img src="img/logo-white.png" width="371" height="116" alt="MS Performance"></a>
     <nav class="nav" aria-label="Разделы">
@@ -338,7 +334,6 @@ fieldset { border: 0; padding: 0; }
     <figure data-reveal style="--i:1"><img src="img/car-3.webp" width="909" height="1280" alt="Audi A6 на подъёмнике" loading="lazy"></figure>
     <figure data-reveal style="--i:2"><img src="img/car-0.webp" width="960" height="1280" alt="Mercedes-Benz E в боксе" loading="lazy"></figure>
     <figure data-reveal style="--i:3"><img src="img/car-4.webp" width="720" height="1280" alt="BMW 3 серии между стойками подъёмника" loading="lazy" style="object-position:50% 60%"></figure>
-    <figure data-reveal style="--i:4"><img src="img/car-1.webp" width="960" height="1280" alt="Фасад автосервиса MS Performance с синими воротами" loading="lazy"></figure>
   </div>
 </section>
 
@@ -469,7 +464,7 @@ fieldset { border: 0; padding: 0; }
     </div>
   </div>
   <div class="legal">
-    <span>© 2026 Автосервис MS Performance · Фото на первом экране: <a class="link" href="https://commons.wikimedia.org/wiki/File:Car_repair_in_an_auto_shop_with_tools_and_equipment_present_on_the_floor_and_a_partially_disassembled_vehicle_on_a_lift.jpg" target="_blank" rel="noopener">Shixart1985</a>, <a class="link" href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a></span>
+    <span>© 2026 Автосервис MS Performance</span>
     <a class="button" href="https://vk.ru/msperformance" target="_blank" rel="noopener">Мы во ВКонтакте</a>
   </div>
 </footer>
