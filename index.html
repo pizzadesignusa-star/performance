@@ -87,6 +87,7 @@ h3 { font-size: var(--step-h3); }
   .btn-white:hover { background: var(--steel); }
   .btn-line:hover { border-color: var(--ink); background: #fff; }
 }
+@media (max-width: 380px) { .btn { white-space: normal; text-align: center; line-height: 1.2; padding: 12px 20px; } }
 .ico { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 
 /* ---------- intro: the logo first, then the gate lifts ---------- */
@@ -165,7 +166,13 @@ h3 { font-size: var(--step-h3); }
   .fact:nth-child(3) { box-shadow: inset 0 1px 0 var(--steel); }
   .fact:nth-child(4) { box-shadow: inset 1px 0 0 var(--steel), inset 0 1px 0 var(--steel); }
 }
-@media (max-width: 520px) { .fact { padding: 18px; } .fact b { font-size: var(--step-body); } }
+@media (max-width: 520px) {
+  .facts { grid-template-columns: 1fr; }
+  .fact { padding: 16px 20px; }
+  .fact + .fact, .fact:nth-child(3), .fact:nth-child(4) { box-shadow: inset 0 1px 0 var(--steel); }
+  .fact b { font-size: var(--step-body); }
+  .fact div { min-width: 0; }
+}
 
 /* ---------- cars row ---------- */
 .cars-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -242,7 +249,9 @@ h3 { font-size: var(--step-h3); }
 .vibro-points .ico { width: 20px; height: 20px; }
 .vibro-text .btn { align-self: flex-start; margin-top: 8px; }
 @media (max-width: 900px) {
-  .vibro-box { grid-template-columns: 1fr; }
+  .vibro-box { grid-template-columns: minmax(0, 1fr); }
+  .vibro-text { min-width: 0; }
+  .vibro-text h2 { overflow-wrap: anywhere; }
   .vibro-photo { min-height: 0; aspect-ratio: 4 / 4.4; }
 }
 
@@ -297,8 +306,11 @@ h3 { font-size: var(--step-h3); }
 .why-note .btn { min-height: 44px; padding: 0 20px; }
 @media (max-width: 900px) {
   .why-grid { grid-template-columns: 1fr; }
-  .why-photo { min-height: 0; aspect-ratio: 4 / 3.4; }
-  .why-note { border-radius: var(--r-small); flex-direction: column; align-items: flex-start; }
+  .why-photo { min-height: 0; aspect-ratio: 4 / 5; }
+  .why-note { left: 12px; right: 12px; bottom: 12px; padding: 10px 10px 10px 18px; gap: 10px; }
+  .why-note span { display: none; }
+  .why-note b { font-size: var(--step-small); }
+  .why-note .btn { min-height: 40px; padding: 0 16px; }
 }
 
 /* ---------- steps: three in a row, opened by scrolling ---------- */
@@ -390,14 +402,28 @@ h3 { font-size: var(--step-h3); }
 @media (max-width: 700px) { .contact-box { grid-template-columns: 1fr; } }
 
 /* ---------- footer ---------- */
-.footer { padding: 28px 0 36px; }
-.footer-in { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 28px; font-size: var(--step-small); color: var(--muted); }
-.footer-links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
-.footer a { text-decoration: none; transition: color 180ms ease; }
-.footer a:hover { color: var(--ink); }
-.vk { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--navy); color: #fff; transition: background-color 200ms ease, transform 200ms var(--ease-out); }
-.vk:hover { background: var(--blue); transform: translateY(-2px); }
+.footer { margin-top: var(--gap-section); padding: 0 0 24px; }
+.footer-box { background: var(--navy); color: #fff; border-radius: var(--r-card); padding: clamp(32px, 4.5vw, 56px); }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1.2fr 1fr; gap: 32px 40px; }
+.footer-logo { display: block; width: 180px; }
+.footer-logo img { width: 100%; height: auto; }
+.footer-about p { margin-top: 18px; color: var(--on-dark-soft); font-size: var(--step-small); line-height: 1.55; max-width: 30ch; }
+.footer h3 { font-size: var(--step-body); font-weight: 600; letter-spacing: 0; margin-bottom: 16px; }
+.footer-col ul { display: grid; gap: 10px; font-size: var(--step-small); }
+.footer-col a, .footer-col span { color: var(--on-dark-soft); text-decoration: none; transition: color 180ms ease; }
+.footer-col a:hover { color: #fff; }
+.footer-col .big { color: #fff; font-size: var(--step-body); font-weight: 500; }
+.footer-bottom { margin-top: 40px; padding-top: 24px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: var(--step-small); color: var(--on-dark-soft); }
+.footer-bottom .right { display: flex; align-items: center; gap: 12px; }
+.footer-bottom a { color: var(--on-dark-soft); text-decoration: none; transition: color 180ms ease; }
+.footer-bottom a:hover { color: #fff; }
+.vk { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--blue); color: #fff !important; transition: background-color 200ms ease, transform 200ms var(--ease-out); }
+.vk:hover { background: var(--blue-strong); transform: translateY(-2px); }
 .vk svg { width: 20px; height: 20px; }
+.to-top { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.2); }
+.to-top svg { width: 16px; height: 16px; transform: rotate(-90deg); }
+@media (max-width: 980px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
 
 /* ---------- cookie notice ---------- */
 .cookie { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 50; max-width: 360px; padding: 18px; border-radius: var(--r-small); background: #fff; color: var(--ink); box-shadow: 0 12px 32px rgba(16, 26, 46, 0.22); display: none; font-size: var(--step-small); }
@@ -478,10 +504,6 @@ h3 { font-size: var(--step-h3); }
 <section class="hero wrap" aria-labelledby="hero-h">
   <div class="hero-photo">
     <img src="img/hero-bmw.jpg" width="1448" height="1086" alt="Чёрный BMW на двухстоечном подъёмнике с синими стойками в автосервисе" fetchpriority="high">
-    <a class="hero-badge" href="#vibro">
-      <span class="dot"><svg class="ico" aria-hidden="true"><use href="#i-wave"/></svg></span>
-      <span><b>Вибростенд — 1800 ₽</b><span>Найдём стуки в подвеске</span></span>
-    </a>
   </div>
   <div class="hero-under">
     <h1 id="hero-h"><span class="line"><span style="--i:0">Автосервис</span></span><span class="line"><span style="--i:1">в&nbsp;Вологде</span></span></h1>
@@ -706,14 +728,51 @@ h3 { font-size: var(--step-h3); }
 </main>
 
 <footer class="footer">
-  <div class="wrap footer-in">
-    <span>© 2026 Автосервис MS Performance</span>
-    <div class="footer-links">
-      <a href="privacy.html">Политика конфиденциальности</a>
-      <a href="terms.html">Пользовательское соглашение</a>
-      <a href="privacy.html#cookie">Использование cookie</a>
+  <div class="wrap">
+    <div class="footer-box">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a class="footer-logo" href="#top"><img src="img/logo-white.png" width="371" height="116" alt="MS Performance" loading="lazy"></a>
+          <p>Автосервис в Вологде для тех, кто хочет получать удовольствие от вождения. Профессиональный ремонт и честная диагностика.</p>
+        </div>
+        <nav class="footer-col" aria-label="Разделы сайта">
+          <h3>Разделы</h3>
+          <ul>
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#cars">Наши машины</a></li>
+            <li><a href="#vibro">Вибростенд</a></li>
+            <li><a href="#why">О сервисе</a></li>
+            <li><a href="#how">Как мы работаем</a></li>
+            <li><a href="#reviews">Отзывы</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+          </ul>
+        </nav>
+        <div class="footer-col">
+          <h3>Контакты</h3>
+          <ul>
+            <li><a class="big" href="tel:+79535081313">+7 (953) 508-13-13</a></li>
+            <li><span>Вологда, ул. Гиляровского, 50а</span></li>
+            <li><span>Ежедневно с 9:00 до 19:00</span></li>
+            <li><a href="https://yandex.ru/maps/?rtext=~59.229061%2C39.930815&amp;rtt=auto" target="_blank" rel="noopener">Проложить маршрут</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Документы</h3>
+          <ul>
+            <li><a href="privacy.html">Политика конфиденциальности</a></li>
+            <li><a href="terms.html">Пользовательское соглашение</a></li>
+            <li><a href="privacy.html#cookie">Использование cookie</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Автосервис MS Performance</span>
+        <div class="right">
+          <a class="to-top" href="#top">Наверх <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="vk" href="https://vk.ru/msperformance" target="_blank" rel="noopener" aria-label="MS Performance во ВКонтакте"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.8 17.3c-5.5 0-8.6-3.8-8.7-10h2.7c.1 4.6 2.1 6.5 3.7 6.9V7.3h2.6v3.9c1.6-.2 3.2-2 3.8-3.9h2.6c-.4 2.4-2.2 4.2-3.5 4.9 1.3.6 3.3 2.2 4.1 5.1h-2.8c-.6-1.9-2.1-3.4-4.2-3.6v3.6z"/></svg></a>
+        </div>
+      </div>
     </div>
-    <a class="vk" href="https://vk.ru/msperformance" target="_blank" rel="noopener" aria-label="MS Performance во ВКонтакте"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.8 17.3c-5.5 0-8.6-3.8-8.7-10h2.7c.1 4.6 2.1 6.5 3.7 6.9V7.3h2.6v3.9c1.6-.2 3.2-2 3.8-3.9h2.6c-.4 2.4-2.2 4.2-3.5 4.9 1.3.6 3.3 2.2 4.1 5.1h-2.8c-.6-1.9-2.1-3.4-4.2-3.6v3.6z"/></svg></a>
   </div>
 </footer>
 
